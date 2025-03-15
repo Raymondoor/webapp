@@ -1,0 +1,18 @@
+<footer>
+    <div id="ft-desk"></div>
+    <div id="ft-mobile"></div>
+</footer>
+<?php
+require_once(SCRIPT_DIR.'/script.php');
+if(file_exists(SCRLIB_DIR.'/'.$INDEX.'.php')){require_once(SCRLIB_DIR.'/'.$INDEX.'.php');}
+?>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "name": "",
+    "url": "<?=HOME_URL.$_SERVER['REQUEST_URI']?>",
+}
+</script>
+</body>
+</html>
