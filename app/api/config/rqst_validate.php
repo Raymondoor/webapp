@@ -6,10 +6,14 @@ class rqst_validate{
     private static $ip6 = '::1'; // ipv6 e.g. '::1'
 
     public function ip_gate(){
-        if(strpos($_SERVER['REMOTE_ADDR'], self::$ip) === 0 || strpos($_SERVER['REMOTE_ADDR'], self::$ip6) === 0){
+        if(empty($ip) && empty($ip6)){
             return true;
         }else{
-            return false;
+            if(strpos($_SERVER['REMOTE_ADDR'], self::$ip) === 0 || strpos($_SERVER['REMOTE_ADDR'], self::$ip6) === 0){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
     public function admin_gate(){ // limit url access thru login state

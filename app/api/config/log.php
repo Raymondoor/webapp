@@ -9,8 +9,10 @@ function generate_log($name, $data){
     if($file){fwrite($file, $data.PHP_EOL);fclose($file);}
 }
 /*
-$log_data = '"'.date("Y-m-d H:i:s").'", "Login"'; // This will be written as log. \n is not required, the function handles it.
-generate_log('/login/login-', $log_data); // This will make a /login directory inside DATA_DIR, make a file called login-YYYY-mm.log
+// This will be written as log. \n is not required, the function handles it.
+$log_data = '"'.date("Y-m-d H:i:s").'", "Login"';
+// This will make a /login directory inside DATA_DIR, make a file called login-YYYY-mm.log
+generate_log('/login/login-', $log_data);
 */
 
 }
