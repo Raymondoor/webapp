@@ -1,5 +1,6 @@
 {
     "name": "raymondoor/webapp",
+    "type": "project",
     "description": "Simple web application frame.",
     "license": "proprietary",
     "require": {
