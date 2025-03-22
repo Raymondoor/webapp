@@ -8,7 +8,6 @@ use function raymondoor\generate_log;
 session_start();
 $request = new rqst_validate();
 if($_SERVER['REQUEST_METHOD'] === 'POST' && $request->csrf_gate('login')){
-    $_SESSION['mistake'] = 0;
     if(count(array_filter($_POST)) === count($_POST)){
         $username = str_rot13($_POST['username']);
         $password = $_POST['password'];
