@@ -1,3 +1,6 @@
+<?php require_once(__DIR__.'/../../vendor/autoload.php');
+use function raymondoor\request_url_schm_usr;
+?>
 <footer>
     <div id="ft-desk"></div>
     <div id="ft-mobile"></div>
@@ -11,7 +14,7 @@ if(file_exists(SCRLIB_DIR.'/'.$INDEX.'.php')){require_once(SCRLIB_DIR.'/'.$INDEX
     "@context": "http://schema.org",
     "@type": "WebPage",
     "name": "",
-    "url": "<?=HOME_URL.$_SERVER['REQUEST_URI']?>",
+    "url": "<?=request_url_schm_usr().$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']?>",
 }
 </script>
 </body>

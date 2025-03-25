@@ -1,4 +1,5 @@
 <?php require_once(__DIR__.'/../../vendor/autoload.php');
+use function raymondoor\request_url_schm_usr;
 header('Content-Type: text/html; charset=utf-8; Content-Security-Policy: script-src "self" frame-src "self";');
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ header('Content-Type: text/html; charset=utf-8; Content-Security-Policy: script-
     <meta property="og:image" content="<?=IMAGE_URL.'/brand/'?>" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:image" content="<?=IMAGE_URL.'/brand/'?>" />
-    <meta property="og:url" content="<?=HOME_URL.$_SERVER['REQUEST_URI']?>" />
+    <meta property="og:url" content="<?=request_url_schm_usr().$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']?>" />
 
     <meta property="og:type" content="website" />
     <meta name="google-site-verification" content="" />

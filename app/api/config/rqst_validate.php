@@ -18,8 +18,8 @@ class rqst_validate{
     }
     public function admin_gate(){ // limit url access thru login state
         if(self::ip_gate()){
-            if(isset($_SESSION['username'])){
-                $sname = $_SESSION['username'];
+            if(isset($_SESSION['raymondoor_username'])){
+                $sname = $_SESSION['raymondoor_username'];
                 $result = '';
                 try{
                     $query = new DBstatement("SELECT user.username FROM user WHERE username = :username");
@@ -40,12 +40,12 @@ class rqst_validate{
         }
     }
     public function csrf_gate($message = 'undefined'){ // check token and generate a new one. $message is used as log data, to describe where the blockage happened.
-        if(!isset($_POST['csrf']) || !hash_equals($_SESSION['csrf'], $_POST['csrf'])){
+        if(!isset($_POST['csrf']) || !hash_equals($_SESSION['raymondoor_csrf'], $_POST['csrf'])){
             $log_data = date("Y-m-d H:i:s").', "at '.$message.'", "'.$_SERVER['HTTP_USER_AGENT'].'", "'.$_SERVER['REMOTE_ADDR'].'"';
             generate_log('/csrf/csrf-', $log_data);
             return false;
         }else {
-            $_SESSION['csrf'] = bin2hex(random_bytes(32));
+            $_SESSION['raymondoor_csrf'] = bin2hex(random_bytes(32));
             return true;
         }
     }

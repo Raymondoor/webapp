@@ -4,7 +4,7 @@ use raymondoor\rqst_validate;
 session_start();
 $request = new rqst_validate();
 if($request->ip_gate()){
-    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+    $_SESSION['raymondoor_csrf'] = bin2hex(random_bytes(32));
 }
 //Until here.
 // Page specific data here.
@@ -19,18 +19,18 @@ include_once(TEMPLATE_DIR.'/html-header.php');
     <div id="maincontent">
         <h2>Login</h2>
         <div id="form">
-<?php if(!isset($_SESSION['login-over'])){ ?>
+<?php if(!isset($_SESSION['raymondoor_login-over'])){ ?>
             <form action="<?=FORM_URL.'/adm-login.php'?>" method="post">
-                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['raymondoor_csrf']?>">
                 <label>Username:</label><br>
                 <input type="text" name="username" autofocus autocomplete="off"><br>
                 <label>Password:</label><br>
                 <input type="password" name="password"><br>
                 <input type="submit" value="Login">
             </form>
-<?php if(isset($_SESSION['formerror'])){ ?>
-            <p><?=$_SESSION['formerror']?></p>
-    <?php unset($_SESSION['formerror']);
+<?php if(isset($_SESSION['raymondoor_formerror'])){ ?>
+            <p><?=$_SESSION['raymondoor_formerror']?></p>
+    <?php unset($_SESSION['raymondoor_formerror']);
 }else{ ?>
             <p></p>
 <?php }} ?>
