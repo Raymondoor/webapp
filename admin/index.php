@@ -22,6 +22,7 @@ include_once(TEMPLATE_DIR.'/html-header.php');
         <pre>
 <?php print_r($_SESSION); ?>
         </pre>
+        <a href="./phpinfo.php">phpinfo()</a>
     </div>
 </main>
 <?php
