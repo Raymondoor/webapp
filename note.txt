@@ -1,0 +1,4 @@
+setup
+
+go to "/app/api/config/"
+change "dirlink.php" line19 and "rqst_validate.php" line5&6 accordingly.

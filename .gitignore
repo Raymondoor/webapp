@@ -1,3 +1,2 @@
 composer.phar
-note.txt
 # add app/data/ to ignore to avoid exposing personal data.
