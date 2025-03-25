@@ -6,7 +6,7 @@ class rqst_validate{
     private static $ip6 = '::1'; // ipv6 e.g. '::1'
 
     public function ip_gate(){
-        if(empty($ip) && empty($ip6)){
+        if(empty(self::$ip) && empty(self::$ip6)){
             return true;
         }else{
             if(strpos($_SERVER['REMOTE_ADDR'], self::$ip) === 0 || strpos($_SERVER['REMOTE_ADDR'], self::$ip6) === 0){
