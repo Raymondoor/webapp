@@ -1,10 +1,13 @@
 <?php require_once(__DIR__.'/../vendor/autoload.php'); // Copy the file and paste it where it belongs. change autoload path accordingly.
 // Functions and loaded data here.
 use raymondoor\rqst_validate;
+use function raymondoor\return_header;
 session_start();
 $request = new rqst_validate();
 if($request->ip_gate()){
     $_SESSION['raymondoor_csrf'] = bin2hex(random_bytes(32));
+}else{
+    return_header('/');
 }
 //Until here.
 // Page specific data here.
