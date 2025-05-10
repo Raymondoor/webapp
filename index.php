@@ -1,11 +1,11 @@
 <?php require_once(__DIR__.'/vendor/autoload.php'); // Copy the file and paste it where it belongs. change autoload path accordingly.
 // Functions and loaded data here.
-use raymondoor\DBstatement;
+
+use raymondoor\DBoperation\DBoperation;
 use function raymondoor\request_url_schm_usr;
 
 try{
-    $query = new DBstatement('SELECT * FROM user');
-    $result = $query->execute([]);
+    $result = DBoperation::all('user');
     $data = str_rot13($result[0]['username']);
 }catch(Exception $e){
     $data = $e->getMessage();

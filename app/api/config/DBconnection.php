@@ -15,6 +15,9 @@ class DBconnection{
                 self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 self::$pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
             }catch(\PDOException $e){
+                if(!is_dir(self::$errpath)){
+                    mkdir(self::$errpath, 0755);
+                }
                 $errmessage = 'DBconnection Failed: '.$e->getmessage();
                 error_log($errmessage.PHP_EOL, 3, self::$errpath);
                 throw new \Exception($errmessage);

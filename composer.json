@@ -8,7 +8,8 @@
     },
     "autoload": {
         "psr-4": {
-            "raymondoor\\": "app/api/config/"
+            "raymondoor\\": "app/api/config/",
+            "raymondoor\\DBoperation\\": "app/api/database/"
         },
         "files": [
             "app/api/config/config.php"

@@ -13,11 +13,16 @@ class ComposerStaticInit451ba18da532810ae79d7082ac2daa5f
     public static $prefixLengthsPsr4 = array (
         'r' => 
         array (
+            'raymondoor\\DBoperation\\' => 23,
             'raymondoor\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'raymondoor\\DBoperation\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/api/database',
+        ),
         'raymondoor\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/api/config',

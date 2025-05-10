@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'raymondoor\\DBoperation\\' => array($baseDir . '/app/api/database'),
     'raymondoor\\' => array($baseDir . '/app/api/config'),
 );
