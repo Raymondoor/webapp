@@ -1,2 +1,4 @@
 composer.phar
+idea.txt
 # add app/data/ to ignore to avoid exposing personal data.
+# add app/api/config to ignore to avoid exposing personal data.

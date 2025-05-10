@@ -14,6 +14,9 @@ class DBstatement{
     }
     public function execute(array $parameters = []){
         try{
+            if(empty($this->statement)){
+                throw new \Exception('Statement Cannot Be Empty: '.$this->statement);
+            }
             $this->pdo->beginTransaction();
             $stmt = $this->pdo->prepare($this->statement);
             if(!$stmt){ // Just in case
@@ -25,28 +28,25 @@ class DBstatement{
                 $errorInfo = $stmt->errorInfo();
                 throw new \Exception('Execution Failed: '.$errorInfo[2]);
             }
-            $queryType = strtoupper(substr($this->statement, 0, 6));
             $result = null;
-            switch($queryType){
-                case 'SELECT':
-                    $result = $stmt->fetchAll();
-                    break;
-                case 'INSERT':
-                case 'UPDATE':
-                case 'DELETE':
-                    $result = $stmt->rowCount();
-                    break;
-                default:
-                    $this->pdo->rollBack();
-                    throw new \Exception('Unsupported Query Type: '.$this->statement);
+            if(strpos($this->statement, 'SELECT') == 0){
+                $result = $stmt->fetchAll();
+            }else{
+                $result = $stmt->rowCount();
             }
+            /*
+            else{
+                $this->pdo->rollBack();
+                throw new \Exception('Unsupported Query Type: '.$this->statement);
+            }
+            */
             $this->pdo->commit();
             return $result;
         }catch(\Exception $e){
             if($this->pdo->inTransaction()){ // Check if in transaction before rollback
                 $this->pdo->rollBack();
             }
-            $errmessage = 'Query Failed :'.$e->getMessage().' - Statement: '.$this->statement;
+            $errmessage = 'Query Failed: '.$e->getMessage().' - Statement: '.$this->statement;
             throw new \Exception($errmessage);
         }
     }
