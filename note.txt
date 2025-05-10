@@ -3,3 +3,7 @@ setup
 go to "/app/api/config/"
 change "dirlink.php" line19 and "rqst_validate.php" line5&6 accordingly.
 add app/data/ to "/.gitignore" to avoid exposing personal data.
+
+required extensions (that are not bundled by default)
+PDO
+PDO_* (depending on your database)
